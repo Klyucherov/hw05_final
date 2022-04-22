@@ -30,8 +30,6 @@ def group_posts(request, slug):
 def profile(request, username):
     author = get_object_or_404(User, username=username)
     post_list = Post.objects.filter(author=author)
-    if not request.user.is_authenticated:
-        return render(request, 'users/login.html')
     following = Follow.objects.filter(
         user=request.user.id,
         author=author.id
