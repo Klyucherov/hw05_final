@@ -56,13 +56,14 @@ class Post(models.Model):
         help_text='Введите текст поста'
     )
     image = models.ImageField(
-        'Картинка',
         upload_to='posts/',
-        blank=True
+        blank=True,
+        verbose_name='Картинка',
+        help_text='Выберите фото'
     )
 
     class Meta:
-        ordering = ('-pub_date',)
+        ordering = ['-pub_date']
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
